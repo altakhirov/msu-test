@@ -15,7 +15,6 @@ class ResponsibleSerializer(serializers.PrimaryKeyRelatedField):
 
 class TaskSerializer(serializers.ModelSerializer):
     created_by = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    file = serializers.FileField(max_length=None, allow_empty_file=True, allow_null=True, required=False)
     responsibles = ResponsibleSerializer(many=True, queryset=User.objects.all())
 
     class Meta:
